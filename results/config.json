@@ -1,0 +1,91 @@
+{
+  "original_repository": "https://github.com/vitor-souza-ime/pidmujoco",
+  "source_commit": "055319e251a11f1042b974f8a897a6300fa2ed1d",
+  "engine": "MuJoCo",
+  "mujoco_version": "4.0.1",
+  "python": "3.12.14",
+  "seeds": 20,
+  "duration_s": 16.0,
+  "timestep_s": 0.005,
+  "log_stride": 10,
+  "scenarios": [
+    {
+      "name": "nominal",
+      "mass": 0.1,
+      "speed": 1.0,
+      "noise_pos": 0.0,
+      "noise_vel": 0.0,
+      "pulse": false
+    },
+    {
+      "name": "fast",
+      "mass": 0.1,
+      "speed": 2.5,
+      "noise_pos": 0.0,
+      "noise_vel": 0.0,
+      "pulse": false
+    },
+    {
+      "name": "payload",
+      "mass": 0.4,
+      "speed": 1.0,
+      "noise_pos": 0.0,
+      "noise_vel": 0.0,
+      "pulse": false
+    },
+    {
+      "name": "disturbance",
+      "mass": 0.1,
+      "speed": 1.0,
+      "noise_pos": 0.0,
+      "noise_vel": 0.0,
+      "pulse": true
+    },
+    {
+      "name": "combined",
+      "mass": 0.4,
+      "speed": 2.5,
+      "noise_pos": 0.003,
+      "noise_vel": 0.03,
+      "pulse": true
+    }
+  ],
+  "controllers": [
+    "fixed_no_gravity",
+    "fixed_gravity",
+    "adaptive_no_gravity",
+    "adaptive_gravity"
+  ],
+  "gear": [
+    20.0,
+    20.0,
+    10.0
+  ],
+  "joint_torque_limit_Nm": [
+    6.0,
+    6.0,
+    3.0
+  ],
+  "Kp_initial": [
+    12.0,
+    14.0,
+    8.0
+  ],
+  "Ki_initial": [
+    0.6,
+    0.6,
+    0.35
+  ],
+  "Kd_initial": [
+    2.0,
+    2.3,
+    1.2
+  ],
+  "adaptation_interval_steps": 50,
+  "history_length_steps": 100,
+  "gravity_compensator_nominal_payload_kg": 0.1,
+  "payload_scenarios_mismatch_controller": true,
+  "bootstrap_resamples": 10000,
+  "causal_comparison": "paired independently seeded full trajectories, not initial versus final windows",
+  "stability_claim": "empirical only; no formal stability guarantee"
+}

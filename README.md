@@ -4,7 +4,7 @@ Reproducible evaluation of fixed and bounded adaptive PID control for a three-de
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white) ![MuJoCo](https://img.shields.io/badge/MuJoCo-4.0.1-2374ab) ![Study](https://img.shields.io/badge/Simulations-400-15803d) ![Research](https://img.shields.io/badge/Research-reproducible-555555)
 
-> 📌 **Repository status:** This repository currently contains its README only. The completed experiment's source files, datasets, and figures have not yet been uploaded here. The commands below will work once the listed files are added to the repository.
+> ✅ **Repository status:** The experiment's implementation, automated tests, complete simulation-level CSV data, representative time-series traces, and eleven measured figures are available in this repository.
 
 ## 🔎 Research question
 
@@ -62,11 +62,33 @@ Adaptive PID matched the fixed-gravity baseline in the nominal and fast scenario
 
 All 400 runs finished with finite recorded values; no joint-limit proximity events were observed in this defined simulation protocol. These statements are not hardware safety guarantees.
 
+## 🖼️ Figures
+
+### Joint-space tracking accuracy
+
+![Joint RMSE by controller and scenario](results/figures/joint_rmse_comparison.png)
+
+### Adaptive improvement under uncertainty
+
+![Paired adaptive improvement and 95% confidence intervals](results/figures/improvement_ci.png)
+
+### Representative combined-stress trajectory
+
+![Three-joint tracking in the combined scenario](results/figures/tracking_combined.png)
+
+### Control effort
+
+![Torque RMS by controller and scenario](results/figures/effort_comparison.png)
+
+All eleven original plots are available in [`results/figures/`](results/figures/).
+
 ## ⚙️ Reproducibility
 
-Once the experiment files are committed, place the contents of the `pidmujoco_enhanced/` package at the repository root, then run:
+Clone the repository and reproduce the study:
 
 ```bash
+git clone https://github.com/vitor-souza-ime/adaptive-pid-mujoco-benchmark.git
+cd adaptive-pid-mujoco-benchmark
 python -m pip install -r requirements.txt
 python -m pytest tests -q
 python study.py --seeds 20 --duration 16 --output results
@@ -74,7 +96,7 @@ python study.py --seeds 20 --duration 16 --output results
 
 The implementation uses Python, MuJoCo, NumPy, SciPy, pandas, Matplotlib, and pytest. It uses fixed seed mappings for initial joint configurations, measurement noise, and perturbations, so controller comparisons remain paired.
 
-### Intended repository layout
+### Repository layout
 
 ```text
 adaptive-pid-mujoco-benchmark/
